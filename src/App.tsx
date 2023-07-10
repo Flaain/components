@@ -9,7 +9,6 @@ const App = () => (
             { title: "Title 4", description: "Description 4" },
             { title: "Title 5", description: "Description 5" },
         ]}
-        autoclose={true}
     />
 );
 
