@@ -15,11 +15,10 @@ const Accordion: React.FC<Props> = ({ data, autoclose = false }) => {
 
     const handleSelect = (index: number): void => {
         if (!autoclose) {
-            setSelected((prevState) => [...(prevState.includes(index) ? prevState.filter((value) => value !== index) : [...prevState, index])])
-            return;
+            setSelected((prevState) => [...(prevState.includes(index) ? prevState.filter((value) => value !== index) : [...prevState, index])]);
+        } else {
+            setSelected((prevState) => (prevState.includes(index) ? [] : [index]));
         }
-
-        setSelected((prevState) => (prevState.includes(index) ? [] : [index]));
     };
 
     return (
