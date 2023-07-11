@@ -1,5 +1,5 @@
 class Slider {
-    constructor(container = ".slider__container", options = { loop: false, slidesToShow: 3, slidesToScroll: 1, gap: 20 }) {
+    constructor(container = ".slider__container", options = { loop: true, slidesToShow: 3, slidesToScroll: 1, gap: 20 }) {
         this.container = document.querySelector(container);
         this.track = this.container?.querySelector(".slider__list");
         this.items = this.track?.querySelectorAll(".slider__item");
@@ -62,7 +62,6 @@ class Slider {
         if (this.isLastSlide && this.loop) {
             this.position = 0;
             this.track.style.transform = `translateX(${this.position}px)`;
-            this.isLastSlide = Math.abs(this.position) >= (this.items.length - this.slidesToShow) * this.itemWidth;
             return;
         }
 
