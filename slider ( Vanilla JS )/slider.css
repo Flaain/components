@@ -1,0 +1,90 @@
+body {
+    max-width: 1440px;
+    width: 100%;
+    padding: 0 15px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider {
+    display: flex;
+    flex-direction: column;
+
+    
+    position: relative;
+}
+
+.slider__container {
+    overflow: hidden;
+    width: calc(1200px - 60px);
+}
+
+.slider__button {
+    position: absolute;
+
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 9;
+
+    background-color: #FFF;
+    color: #171717;
+    text-transform: uppercase;
+    font-weight: 600;
+
+    padding: 20px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.slider__button_type_next {
+    right: -5px;
+}
+
+.slider__button_type_prev {
+    left: -30px;
+}
+
+.slider__list {
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    transition: transform .2s ease-in-out;
+
+}
+
+.slider__item {
+    min-width: 200px;
+    height: 200px;
+    border-radius: 8px;
+}
+
+.one {
+    background-color: blueviolet;
+}
+
+.two {
+    background-color: aliceblue;
+}
+
+.three {
+    background-color: aqua;
+}
+
+.four {
+    background-color: bisque;
+}
+
+.five {
+    background-color: yellow;
+}
+
+.six {
+    background-color: tomato;
+}
