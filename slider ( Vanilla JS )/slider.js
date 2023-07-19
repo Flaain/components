@@ -1,5 +1,8 @@
 class Slider {
-    constructor(container = ".slider__container", options = { loop: true, slidesToShow: 3, slidesToScroll: 1, gap: 20 }) {
+    constructor(
+        container = ".slider__container",
+        options = { loop: true, slidesToShow: 3, slidesToScroll: 1, gap: 20 }
+    ) {
         this.container = document.querySelector(container);
         this.track = this.container?.querySelector(".slider__list");
         this.items = this.track?.querySelectorAll(".slider__item");
@@ -20,9 +23,10 @@ class Slider {
 
         this.setWidth(this.itemWidth, this.items);
         this.setListeners();
-        this.setDisabled();
-    }
 
+        !this.loop && this.setDisabled();
+    }
+    
     setWidth(width, items = []) {
         items.forEach((item) => {
             item.style.minWidth = `${width - this.gap}px`;
@@ -53,15 +57,14 @@ class Slider {
         this.position += this.itemsLeft >= this.slidesToScroll ? this.moveTo : this.itemsLeft * this.itemWidth;
         this.track.style.transform = `translateX(${this.position}px)`;
 
-        this.setDisabled();
+        !this.loop && this.setDisabled();
     }
 
     handleNext() {
-        this.isLastSlide = Math.abs(this.position) >= (this.items.length - this.slidesToShow) * this.itemWidth;
-
-        if (this.isLastSlide && this.loop) {
+        if (Math.abs(this.position) >= (this.items.length - this.slidesToShow) * this.itemWidth && this.loop) {
             this.position = 0;
             this.track.style.transform = `translateX(${this.position}px)`;
+            this.track = this.container?.querySelector(".slider__list");
             return;
         }
 
@@ -69,12 +72,10 @@ class Slider {
         this.position -= this.itemsLeft >= this.slidesToScroll ? this.moveTo : this.itemsLeft * this.itemWidth;
         this.track.style.transform = `translateX(${this.position}px)`;
 
-        this.setDisabled();
+        !this.loop && this.setDisabled();
     }
 
     setDisabled() {
-        if (this.loop) return;
-
         this.prevBtn.disabled = this.position === 0;
         this.nextBtn.disabled = Math.abs(this.position) >= (this.items.length - this.slidesToShow) * this.itemWidth;
     }
