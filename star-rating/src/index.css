@@ -1,0 +1,12 @@
+body {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+.icon {
+  transition: all .2s linear;
+}
