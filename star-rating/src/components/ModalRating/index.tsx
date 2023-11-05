@@ -13,10 +13,9 @@ const ModalRating = () => {
 
     return (
         <div className={classes.container}>
-            {hoverRating === null && indexRating === null && (
+            {(hoverRating === null && indexRating === null) ? (
                 <h1 className={classes.text}>Оцените фильм</h1>
-            )}
-            {(hoverRating !== null || indexRating !== null) && (
+            ) : (
                 <div className={classes.text}>
                     <h1 style={{ color: staticData[hoverRating ?? indexRating!].color }}>
                         {staticData[hoverRating ?? indexRating!].rating}
@@ -27,7 +26,11 @@ const ModalRating = () => {
             <ul className={classes.stars}>
                 {staticData.map(({ title }, index) => (
                     <li key={title}>
-                        <label className={classes.button} onMouseEnter={() => setHoverRating(index)} onMouseLeave={() => setHoverRating(null)}>
+                        <label
+                            className={classes.button}
+                            onMouseEnter={() => setHoverRating(index)}
+                            onMouseLeave={() => setHoverRating(null)}
+                        >
                             <FaStar
                                 size={45}
                                 color={
@@ -46,7 +49,7 @@ const ModalRating = () => {
                                 className={classes.input}
                                 type='radio'
                                 aria-label={title}
-                                name="rating"
+                                name='rating'
                                 value={index}
                                 checked={index === indexRating}
                                 onChange={handleClick}
